@@ -28,7 +28,7 @@
 
 - name: Create DisplayConnect option in include if set
   copy:
-    content: DisplayConnect {{ proftpd_config_dir }}/proftpd_display_connect.txt
+    content: "DisplayConnect {{ proftpd_config_dir }}/proftpd_display_connect.txt\n"
     dest: "{{ proftpd_config_include_dir }}/02_display_connect.conf"
   when: proftpd_display_connect is defined
 
