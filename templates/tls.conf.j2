@@ -21,5 +21,6 @@ LoadModule mod_tls_shmcache.c
 TLSSessionCache shm:/file={{ proftpd_tls_sesscache_path }}&size=8388608 300
 
 # Cert/Key
+{{ 'TLSCertificateChainFile ' + proftpd_conf_ssl_ca_certificate if proftpd_conf_ssl_ca_certificate is defined else '' }}
 TLSRSACertificateFile {{ proftpd_conf_ssl_certificate }}
 TLSRSACertificateKeyFile {{ proftpd_conf_ssl_certificate_key }}

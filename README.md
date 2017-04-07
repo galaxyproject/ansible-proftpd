@@ -23,12 +23,12 @@ Role Variables
 **Variables required if `proftpd_galaxy_auth` is set**:
 
 - `proftpd_sql_db`: Database name to connect to for authentication info. Can include host information, see the [ProFTPD
-  ConnectInfo documentation for the "connection-info" parameter][proftpd-connect-info] for details.
+  SQLConnectInfo documentation for the "connection-info" parameter][proftpd-sql-connect-info] for details.
 - `galaxy_user`: The name of the user running the Galaxy server.
 - `galaxy_ftp_upload_dir`: Path to the Galaxy FTP upload directory, should match `ftp_upload_dir` in your Galaxy config.
 - Additionally, you should set `User` and `Group` in `proftpd_options` to the user and group names of your Galaxy user.
 
-[proftpd-connect-info]: http://www.proftpd.org/docs/contrib/mod_sql.html#SQLConnectInfo
+[proftpd-sql-connect-info]: http://www.proftpd.org/docs/contrib/mod_sql.html#SQLConnectInfo
 
 ### Optional variables ###
 
@@ -43,27 +43,29 @@ Role Variables
 - `proftpd_galaxy_options`: Additional options that are set in the server config context if `proftpd_galaxy_auth` is
   set.
 - `proftpd_sql_user` (default: the value of `galaxy_user`): Value of the `username` parameter to
-  [SQLConnectInfo][sql-connect-info].
-- `proftpd_sql_password` (default: empty): Value of the `password` parameter to [SQLConnectInfo][sql-connect-info].
+  [SQLConnectInfo][proftpd-sql-connect-info].
+- `proftpd_sql_password` (default: empty): Value of the `password` parameter to [SQLConnectInfo][proftpd-sql-connect-info].
 - `galaxy_user_uid` (default: looked up automatically): UID of the user running the Galaxy server.
 - `galaxy_user_gid` (default: looked up automatically): GID of the user running the Galaxy server.
 
-These variables control the use of TLS. If unset, TLS will not be enabled. See [mod-tls documentation][mod_tls] and
-Example Playbook for usage.
+These variables control the use of TLS. If unset, TLS will not be enabled. See [mod_tls documentation][proftpd-mod-tls]
+and Example Playbook for usage.
 
 - `proftpd_ssl_src_dir`: Where to copy SSL certificates from.
 - `proftpd_conf_ssl_certificate`: Path on the remote host where the SSL certificate file should be placed.
 - `proftpd_conf_ssl_certificate_key`: Path on the remote host where the SSL private key file should be placed.
+- `proftpd_conf_ssl_ca_certificate`: Path on the remote host where the SSL CA certificate chain should be placed. See
+  the [TLSCertificateChainFile][proftpd-tls-certificate-chain-file] documentation for the format of this file.
 - `sslkeys`: A hash (dictionary) containing private keys. Keys are the filenames (without leading path elements)
   matching `proftpd_conf_ssl_certificate_key`.
   `proftpd_tls_protocol` (default: `TLSv1.1 TLSv1.2`): Set `TlSProtocol`.
 - `proftpd_tls_cipher_suite` (default:
   `EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:EDH+aRSA:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS`):
   Set `TLSCipherSuite`
-- 
 
-[mod-tls]: http://www.proftpd.org/docs/contrib/mod_tls.html
-[display-connect]: http://www.proftpd.org/docs/directives/linked/config_ref_DisplayConnect.html
+[proftpd-mod-tls]: http://www.proftpd.org/docs/contrib/mod_tls.html
+[proftpd-display-connect]: http://www.proftpd.org/docs/directives/linked/config_ref_DisplayConnect.html
+[proftpd-tls-certificate-chain-file]: http://www.proftpd.org/docs/directives/linked/config_ref_TLSCertificateChainFile.html
 
 Dependencies
 ------------
