@@ -25,3 +25,5 @@ proftpd_tls_sesscache_timeout: 300
 proftpd_tls_renegotiate: null
 
 proftpd_deploy_ssl: false
+
+proftpd_create_ftp_upload_dir: false
