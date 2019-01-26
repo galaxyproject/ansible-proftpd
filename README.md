@@ -26,6 +26,7 @@ Role Variables
   SQLConnectInfo documentation for the "connection-info" parameter][proftpd-sql-connect-info] for details.
 - `galaxy_user`: The name of the user running the Galaxy server.
 - `galaxy_ftp_upload_dir`: Path to the Galaxy FTP upload directory, should match `ftp_upload_dir` in your Galaxy config.
+  - `proftpd_create_ftp_upload_dir` can be used to allow the role to create this with owner `galaxy_user`
 - Additionally, you should set `User` and `Group` in `proftpd_options` to the user and group names of your Galaxy user.
 
 [proftpd-sql-connect-info]: http://www.proftpd.org/docs/contrib/mod_sql.html#SQLConnectInfo
