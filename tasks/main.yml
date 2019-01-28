@@ -73,7 +73,7 @@
 - name: Create parent ftp directory if needed
   file:
     path: "{{ galaxy_ftp_upload_dir }}"
-    owner: "{{ galaxy_user }}"
+    owner: "{{ __galaxy_user_name }}"
     mode: "0750"
     state: directory
   when: proftpd_create_ftp_upload_dir

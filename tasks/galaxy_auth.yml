@@ -26,7 +26,7 @@
     - reload proftpd
 
 - name: Lookup Galaxy user UID
-  command: id -u {{ galaxy_user }}
+  command: id -u {{ __galaxy_user_name }}
   register: galaxy_user_uid_out
   changed_when: no
   when: galaxy_user_uid is undefined
@@ -37,7 +37,7 @@
   when: galaxy_user_uid is undefined
 
 - name: Lookup Galaxy user GID
-  command: id -g {{ galaxy_user }}
+  command: id -g {{ __galaxy_user_name }}
   register: galaxy_user_gid_out
   changed_when: no
   when: galaxy_user_gid is undefined
