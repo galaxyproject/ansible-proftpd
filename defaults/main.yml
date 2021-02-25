@@ -23,6 +23,8 @@ proftpd_galaxy_auth_context: 'server'
 
 proftpd_tls_sesscache_timeout: 300
 proftpd_tls_renegotiate: null
+proftpd_tls_options: null
+proftpd_use_mod_tls_shmcache: true
 
 proftpd_deploy_ssl: false
 
