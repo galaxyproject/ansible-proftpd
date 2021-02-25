@@ -3,7 +3,4 @@
 
 - name: Install ProFTPD (apt)
   apt:
-    name: "{{ item }}"
-  with_items:
-    - proftpd-basic
-    - proftpd-mod-pgsql
+    name: ['proftpd-basic', 'proftpd-mod-pgsql']
