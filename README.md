@@ -155,7 +155,7 @@ Install ProFTPD for Galaxy with TLS:
     proftpd_ssl_src_dir: files/ssl
 
   roles:
-    - galaxyprojectdotorg.proftpd
+    - galaxyproject.proftpd
 ```
 
 If using virtual servers in conjunction with Galaxy authentication, [DefaultRoot][proftpd-default-root]'s `chroot(2)`
