@@ -4,3 +4,10 @@
 - name: Install ProFTPD (apt)
   apt:
     name: ['proftpd-basic', 'proftpd-mod-pgsql']
+
+- name: Change Include
+  replace: 
+    path: "{{ proftpd_config_file }}"
+    regexp: "Include {{ proftpd_config_dir }}/conf.d/$"
+    backup: yes
+    replace: "Include {{ proftpd_config_include_dir }}/*.conf" 
