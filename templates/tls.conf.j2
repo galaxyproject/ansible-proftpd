@@ -3,8 +3,11 @@
 ##
 
 # Enable session reuse (must be in the server context)
+
+{% if proftpd_use_mod_tls_shmcache %}
 LoadModule mod_tls_shmcache.c
 TLSSessionCache shm:/file={{ proftpd_tls_sesscache_path }}&size=8388608 {{ proftpd_tls_sesscache_timeout }}
+{% endif %}
 {{ 'TLSRenegotiate ' ~ proftpd_tls_renegotiate if proftpd_tls_renegotiate else '' }}
 
 {% if proftpd_tls_context == 'global' %}
@@ -20,6 +23,8 @@ TLSProtocol {{ proftpd_tls_protocol | default('TLSv1.1 TLSv1.2') }}
 
 # Require TLS
 TLSRequired {{ proftpd_tls_required | default('on') }}
+
+{{ 'TLSOptions ' ~ proftpd_tls_options if proftpd_tls_options else '' }}
 
 # Limit TLS ciphers
 TLSServerCipherPreference on
