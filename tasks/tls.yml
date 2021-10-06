@@ -31,7 +31,6 @@
   copy:
     src: "{{ proftpd_ssl_src_dir }}/{{ proftpd_conf_ssl_certificate | basename }}"
     dest: "{{ proftpd_conf_ssl_certificate }}"
-    mode: 0440
   when: proftpd_deploy_ssl
   notify:
     - reload proftpd
