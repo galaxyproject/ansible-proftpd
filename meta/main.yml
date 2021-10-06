@@ -1,5 +1,7 @@
 galaxy_info:
-  author: The Galaxy Project
+  role_name: proftpd
+  namespace: galaxyproject
+  author: galaxyproject
   description: Install and Configure ProFTPD (optionally, for Galaxy Servers).
   company: The Galaxy Project
   license: AFL v3.0
