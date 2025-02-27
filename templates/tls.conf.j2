@@ -15,6 +15,7 @@ TLSSessionCache shm:/file={{ proftpd_tls_sesscache_path }}&size=8388608 {{ proft
 {% endif %}
 
 # Enable TLS
+LoadModule mod_tls.c
 TLSEngine on
 TLSLog {{ proftpd_log_dir | default('/var/log/proftpd') }}/tls.log
 
